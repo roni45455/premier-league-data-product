@@ -1,79 +1,74 @@
 import json
 from pathlib import Path
-
 import requests
 
-
+#retrieve the data from the API and store it in a local file for later processing
 BASE_URL = "https://api.openligadb.de"
 LEAGUE = "pl"
 SEASON = 2026
 
-RAW_DIR = Path("data/raw")
+# Paths are resolved from this file, not the working directory,
+# so the ETL can be run from anywhere
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+RAW_DIR = PROJECT_ROOT / "data" / "raw"
 STATE_FILE = RAW_DIR / "matchweek_state.json"
 
+
+# Call an OpenLigaDB endpoint and return the parsed JSON
+def _get(endpoint):
+    return requests.get(f"{BASE_URL}/{endpoint}").json()
+
+
+# Write data to disk as UTF-8 JSON
+def _write_json(path, data):
+    path.write_text(
+        json.dumps(data, indent=2, ensure_ascii=False),
+        encoding="utf-8"
+    )
+
+
+# Load the matchweek ledger, or an empty one on the first run
+def _read_state():
+    if not STATE_FILE.exists():
+        return {}
+
+    return json.loads(STATE_FILE.read_text(encoding="utf-8"))
+
+
+# Fetch every matchweek up to the live one, skipping those already
+# sealed as complete, and return only the matches actually fetched
 def extract():
     RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-    current_group = requests.get(
-        f"{BASE_URL}/getcurrentgroup/{LEAGUE}"
-    ).json()
-
-    current_matchweek = current_group["groupOrderID"]
+    current_matchweek = _get(f"getcurrentgroup/{LEAGUE}")["groupOrderID"]
 
     print(f"\nCurrent matchweek: {current_matchweek}")
 
-    if STATE_FILE.exists():
-        with open(STATE_FILE, "r") as f:
-            state = json.load(f)
-    else:
-        state = {}
-
+    state = _read_state()
     all_matches = []
 
     for matchweek in range(1, current_matchweek + 1):
 
-        matchweek_key = str(matchweek)
+        key = str(matchweek)
+        is_complete = state.get(key, {}).get("complete", False)
 
-        is_complete = state.get(
-            matchweek_key,
-            {}
-        ).get("complete", False)
-
+        # A finished matchweek cannot change, but the live one still can
         if is_complete and matchweek != current_matchweek:
             print(f"MW {matchweek}: complete -> skipped")
             continue
 
         print(f"MW {matchweek}: fetching...")
 
-        url = (
-            f"{BASE_URL}/getmatchdata/"
-            f"{LEAGUE}/{SEASON}/{matchweek}"
-        )
-
-        matches = requests.get(url).json()
-
-        print(f"MW {matchweek}: {len(matches)} matches received")
-
-        output_file = RAW_DIR / f"matchweek_{matchweek}.json"
-
-        with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(matches, f, indent=2, ensure_ascii=False)
-
+        matches = _get(f"getmatchdata/{LEAGUE}/{SEASON}/{matchweek}")
+        _write_json(RAW_DIR / f"matchweek_{matchweek}.json", matches)
         all_matches.extend(matches)
 
-        complete = all(
-            match["matchIsFinished"]
-            for match in matches
-        )
+        complete = all(match["matchIsFinished"] for match in matches)
+        state[key] = {"complete": complete}
 
-        print(f"MW {matchweek}: complete = {complete}")
+        print(f"MW {matchweek}: {len(matches)} matches, complete = {complete}")
 
-        state[matchweek_key] = {
-            "complete": complete
-        }
-
-    with open(STATE_FILE, "w") as f:
-        json.dump(state, f, indent=2)
+    _write_json(STATE_FILE, state)
 
     print(f"\nTotal matches returned: {len(all_matches)}")
 

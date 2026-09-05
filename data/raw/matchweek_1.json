@@ -1,5 +1,114 @@
 [
   {
+    "matchID": 86536,
+    "matchDateTime": "2026-08-23T17:30:00",
+    "timeZoneID": null,
+    "leagueId": 5996,
+    "leagueName": "Premier League 2026/2027",
+    "leagueSeason": 2026,
+    "leagueShortcut": "pl",
+    "matchDateTimeUTC": "2026-08-23T15:30:00Z",
+    "group": {
+      "groupName": "1. Spieltag",
+      "groupOrderID": 1,
+      "groupID": 53281
+    },
+    "team1": {
+      "teamId": 1075,
+      "teamName": "Newcastle United FC",
+      "shortName": "Newcastle",
+      "teamIconUrl": "http://img.uefa.com/imgml/TP/teams/logos/32x32/59324.png",
+      "teamGroupName": null
+    },
+    "team2": {
+      "teamId": 370,
+      "teamName": "FC Liverpool",
+      "shortName": "Liverpool",
+      "teamIconUrl": "https://preview.redd.it/can-someone-explain-to-me-why-does-liverpool-use-this-logo-v0-j6fk5mkwa3bb1.png?width=640&crop=smart&auto=webp&s=5b3da54edf04a5e4dae88cff64fb8a3f70bd789d",
+      "teamGroupName": null
+    },
+    "lastUpdateDateTime": "2026-08-25T18:12:21.6",
+    "matchIsFinished": true,
+    "matchResults": [
+      {
+        "resultID": 127352,
+        "resultName": "Halbzeit",
+        "pointsTeam1": 0,
+        "pointsTeam2": 0,
+        "resultOrderID": 1,
+        "resultTypeID": 1,
+        "resultTypeKind": "HalfTime",
+        "resultDescription": "Ergebnis nach Ende der ersten Halbzeit"
+      },
+      {
+        "resultID": 127353,
+        "resultName": "Endergebnis",
+        "pointsTeam1": 2,
+        "pointsTeam2": 2,
+        "resultOrderID": 2,
+        "resultTypeID": 2,
+        "resultTypeKind": "After90Minutes",
+        "resultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
+      }
+    ],
+    "goals": [
+      {
+        "goalID": 145969,
+        "scoreTeam1": 1,
+        "scoreTeam2": 0,
+        "matchMinute": null,
+        "goalGetterID": 0,
+        "goalGetterName": "",
+        "scoringTeamId": 1075,
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "isOvertime": false,
+        "comment": null
+      },
+      {
+        "goalID": 145970,
+        "scoreTeam1": 2,
+        "scoreTeam2": 0,
+        "matchMinute": null,
+        "goalGetterID": 0,
+        "goalGetterName": "",
+        "scoringTeamId": 1075,
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "isOvertime": false,
+        "comment": null
+      },
+      {
+        "goalID": 145971,
+        "scoreTeam1": 2,
+        "scoreTeam2": 1,
+        "matchMinute": null,
+        "goalGetterID": 0,
+        "goalGetterName": "",
+        "scoringTeamId": 370,
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "isOvertime": false,
+        "comment": null
+      },
+      {
+        "goalID": 145972,
+        "scoreTeam1": 2,
+        "scoreTeam2": 2,
+        "matchMinute": null,
+        "goalGetterID": 0,
+        "goalGetterName": "",
+        "scoringTeamId": 370,
+        "isPenalty": false,
+        "isOwnGoal": false,
+        "isOvertime": false,
+        "comment": null
+      }
+    ],
+    "location": null,
+    "numberOfViewers": null
+  },
+  {
     "matchID": 86528,
     "matchDateTime": "2026-08-21T21:00:00",
     "timeZoneID": null,
@@ -732,115 +841,6 @@
         "goalGetterID": 0,
         "goalGetterName": "",
         "scoringTeamId": 4244,
-        "isPenalty": false,
-        "isOwnGoal": false,
-        "isOvertime": false,
-        "comment": null
-      }
-    ],
-    "location": null,
-    "numberOfViewers": null
-  },
-  {
-    "matchID": 86536,
-    "matchDateTime": "2026-08-23T17:30:00",
-    "timeZoneID": null,
-    "leagueId": 5996,
-    "leagueName": "Premier League 2026/2027",
-    "leagueSeason": 2026,
-    "leagueShortcut": "pl",
-    "matchDateTimeUTC": "2026-08-23T15:30:00Z",
-    "group": {
-      "groupName": "1. Spieltag",
-      "groupOrderID": 1,
-      "groupID": 53281
-    },
-    "team1": {
-      "teamId": 1075,
-      "teamName": "Newcastle United FC",
-      "shortName": "Newcastle",
-      "teamIconUrl": "http://img.uefa.com/imgml/TP/teams/logos/32x32/59324.png",
-      "teamGroupName": null
-    },
-    "team2": {
-      "teamId": 370,
-      "teamName": "FC Liverpool",
-      "shortName": "Liverpool",
-      "teamIconUrl": "https://preview.redd.it/can-someone-explain-to-me-why-does-liverpool-use-this-logo-v0-j6fk5mkwa3bb1.png?width=640&crop=smart&auto=webp&s=5b3da54edf04a5e4dae88cff64fb8a3f70bd789d",
-      "teamGroupName": null
-    },
-    "lastUpdateDateTime": "2026-08-25T18:12:21.6",
-    "matchIsFinished": true,
-    "matchResults": [
-      {
-        "resultID": 127352,
-        "resultName": "Halbzeit",
-        "pointsTeam1": 0,
-        "pointsTeam2": 0,
-        "resultOrderID": 1,
-        "resultTypeID": 1,
-        "resultTypeKind": "HalfTime",
-        "resultDescription": "Ergebnis nach Ende der ersten Halbzeit"
-      },
-      {
-        "resultID": 127353,
-        "resultName": "Endergebnis",
-        "pointsTeam1": 2,
-        "pointsTeam2": 2,
-        "resultOrderID": 2,
-        "resultTypeID": 2,
-        "resultTypeKind": "After90Minutes",
-        "resultDescription": "Ergebnis nach Ende der offiziellen Spielzeit"
-      }
-    ],
-    "goals": [
-      {
-        "goalID": 145969,
-        "scoreTeam1": 1,
-        "scoreTeam2": 0,
-        "matchMinute": null,
-        "goalGetterID": 0,
-        "goalGetterName": "",
-        "scoringTeamId": 1075,
-        "isPenalty": false,
-        "isOwnGoal": false,
-        "isOvertime": false,
-        "comment": null
-      },
-      {
-        "goalID": 145970,
-        "scoreTeam1": 2,
-        "scoreTeam2": 0,
-        "matchMinute": null,
-        "goalGetterID": 0,
-        "goalGetterName": "",
-        "scoringTeamId": 1075,
-        "isPenalty": false,
-        "isOwnGoal": false,
-        "isOvertime": false,
-        "comment": null
-      },
-      {
-        "goalID": 145971,
-        "scoreTeam1": 2,
-        "scoreTeam2": 1,
-        "matchMinute": null,
-        "goalGetterID": 0,
-        "goalGetterName": "",
-        "scoringTeamId": 370,
-        "isPenalty": false,
-        "isOwnGoal": false,
-        "isOvertime": false,
-        "comment": null
-      },
-      {
-        "goalID": 145972,
-        "scoreTeam1": 2,
-        "scoreTeam2": 2,
-        "matchMinute": null,
-        "goalGetterID": 0,
-        "goalGetterName": "",
-        "scoringTeamId": 370,
         "isPenalty": false,
         "isOwnGoal": false,
         "isOvertime": false,
