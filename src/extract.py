@@ -12,6 +12,7 @@ RAW_DIR = Path("data/raw")
 STATE_FILE = RAW_DIR / "matchweek_state.json"
 
 def extract():
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
 
     current_group = requests.get(
         f"{BASE_URL}/getcurrentgroup/{LEAGUE}"
